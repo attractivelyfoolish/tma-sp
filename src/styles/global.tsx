@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
-      background: var(--tg-theme-bg-color,#fff);
+      background: var(--tg-theme-bg-color, #fff);
     }
   `}
 

@@ -1,8 +1,9 @@
 git<p align="center">
-  <br>
-  <img width="240" src="./src/assets/SeedClubLogo.svg" alt="logo of specport">
-  <br>
-  <br>
+<br>
+<img width="240" src="./src/assets/SeedClub.png" alt="logo of specport">
+<br>
+<br>
+
 </p>
 
 # Telegram Mini App (TMA) SpecPort
@@ -14,4 +15,3 @@ git<p align="center">
 npm install
 npm run dev --host
 ```
-

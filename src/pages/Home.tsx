@@ -1,32 +1,34 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useState } from 'react'
 import IconProfile from 'assets/profile.svg'
 import IconScene from 'assets/scene.svg'
 import TabProfile from 'pages/HomeTabProfile'
 import TabScene from 'pages/HomeTabScene'
-
-import { Tabbar,FixedLayout} from '@telegram-apps/telegram-ui';
+import { Tabbar, FixedLayout } from '@telegram-apps/telegram-ui'
 
 function HomePage() {
-  const [currentTab, setCurrentTab] = useState(tabs[0].id);
-  const {Tab} = tabs.find(({id}) => id === currentTab)
+  const [currentTab, setCurrentTab] = useState(tabs[1].id)
+  const { Tab } = tabs.find(({ id }) => id === currentTab) || {}
 
   return (
     <>
-      <TabContainer>
-      <Tab/>
-      </TabContainer>
+      <TabContainer>{Tab && <Tab />}</TabContainer>
 
       <FixedLayout>
-       <Tabbar>
-          {tabs.map(({
-          id,
-          text,
-          Icon
-        }) => <Tabbar.Item key={id} text={text} selected={id === currentTab} onClick={() => setCurrentTab(id)}>
-            <IconContainer><Icon height="32" /></IconContainer>
-          </Tabbar.Item>)}
-      </Tabbar>
+        <Tabbar>
+          {tabs.map(({ id, text, Icon }) => (
+            <Tabbar.Item
+              key={id}
+              text={text}
+              selected={id === currentTab}
+              onClick={() => setCurrentTab(id)}
+            >
+              <IconContainer>
+                <Icon height="32" />
+              </IconContainer>
+            </Tabbar.Item>
+          ))}
+        </Tabbar>
       </FixedLayout>
     </>
   )
@@ -36,25 +38,21 @@ export const IconContainer = styled.div`
   padding: 6px;
 `
 
-export const TabContainer = styled.div`
-`
-    
-
+export const TabContainer = styled.div``
 
 const tabs = [
   {
     id: 1,
     text: 'Scene',
     Icon: IconScene,
-    Tab: TabScene,
+    Tab: TabScene
   },
   {
     id: 2,
     text: 'Profile',
     Icon: IconProfile,
-    Tab: TabProfile,
-  } 
+    Tab: TabProfile
+  }
 ]
-
 
 export default HomePage

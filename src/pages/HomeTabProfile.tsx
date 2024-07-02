@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import TransactionIcon from 'assets/TransactionIcon.svg'
 import SeedClubLogo from 'assets/SeedClubLogo.svg'
 import AvatarPhoto from 'assets/avatar.png'
@@ -15,109 +15,126 @@ import Brand10Photo from 'assets/brand10.png'
 import Brand11Photo from 'assets/brand11.png'
 import Brand12Photo from 'assets/brand12.png'
 import useAccountState from 'account/useAccountState'
-import {usePrivy} from '@privy-io/react-auth';
-import {truncateWithEllipses} from 'utils/strings'
+import { usePrivy } from '@privy-io/react-auth'
+import { truncateWithEllipses } from 'utils/strings'
 
-import { Tabbar, List,Avatar,Caption,Subheadline,Button, Section,Cell ,Chip} from '@telegram-apps/telegram-ui';
-
+import {
+  Avatar,
+  Caption,
+  Subheadline,
+  Button,
+  Section,
+  Chip
+} from '@telegram-apps/telegram-ui'
+import { ReactNode } from 'react'
+import { shouldExcludeProps } from '../utils/react'
 
 const HomeTabProfile = () => {
-  const {claimedRewards} = useAccountState();
-  const {ready, authenticated, login, user, logout} = usePrivy();
-  const disableLogin = !ready || (ready && authenticated);
+  const { claimedRewards } = useAccountState()
+  const { ready, authenticated, login, user, logout } = usePrivy()
+  const disableLogin = !ready || (ready && authenticated)
 
   return (
-  <ProfileLayout>
-    <AvatarRow>
-      <Avatar
-        size={96}
-        src={AvatarPhoto}
-      />
+    <ProfileLayout>
+      <AvatarRow>
+        <Avatar size={96} src={AvatarPhoto} />
 
-      <ClaimCountRow>
-      <ClaimCountLogo height="16"/><ClaimCountCaption
-        level="1"
-        weight="3"
-      >
-        000 000 001
-        </ClaimCountCaption>
-      </ClaimCountRow>
+        <ClaimCountRow>
+          <ClaimCountLogo height="16" />
+          <ClaimCountCaption level="1" weight="3">
+            000 000 001
+          </ClaimCountCaption>
+        </ClaimCountRow>
+      </AvatarRow>
 
-    </AvatarRow>
-
-    <Subheadline
-        level="1"
-        weight="2"
-      >
+      <Subheadline level="1" weight="2">
         username.eth
-    </Subheadline>
+      </Subheadline>
 
+      <SocialRow>
+        <Button mode="filled" size="s" onClick={disableLogin ? logout : login}>
+          {disableLogin
+            ? truncateWithEllipses(user?.wallet?.address, 6, 4)
+            : 'Connect Wallet'}
+        </Button>
 
-    <SocialRow>
+        <Button mode="filled" size="s">
+          @twitter
+        </Button>
 
+        <Button mode="filled" size="s">
+          @warpcast
+        </Button>
+      </SocialRow>
 
+      <StatusRow>
+        <Chip
+          mode="mono"
+          before={<SeedClubTokenLogo height="16" />}
+          after="$club"
+        >
+          {claimedRewards}
+        </Chip>
 
+        <Chip
+          mode="mono"
+          before={<TransactionsIcon height="16" />}
+          after="txns"
+        >
+          35647
+        </Chip>
+      </StatusRow>
 
-      <Button
-  mode="filled"
-  size="s"
-  onClick={disableLogin ? logout : login}
->
-  {disableLogin ? truncateWithEllipses(user.wallet.address, 6,4) : 'Connect Wallet'}
-</Button>
+      <Section header="Active Scenes">
+        <BrandActiveRow>
+          <BrandIcon>
+            <img src={Brand1Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon>
+            <img src={Brand2Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon active>
+            <img src={Brand3Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon active>
+            <img src={Brand4Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon>
+            <img src={Brand5Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon>
+            <img src={Brand6Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon active>
+            <img src={Brand7Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon>
+            <img src={Brand8Photo} height="64" />
+          </BrandIcon>
+        </BrandActiveRow>
+      </Section>
 
-<Button
-  mode="filled"
-  size="s"
->
-  @twitter
-</Button>
-
-<Button
-  mode="filled"
-  size="s"
->
-  @warpcast
-</Button>
-    </SocialRow>
-
-
-    <StatusRow>
-
-<Chip mode="mono" before={<SeedClubTokenLogo height="16"/>} after="$club">
-      {claimedRewards}
-    </Chip>
-    
-<Chip mode="mono" before={<TransactionsIcon height="16"/>} after="txns">
-      35647
-    </Chip>
-    </StatusRow>
-
-<Section header="Active Scenes">
-<BrandActiveRow>
-<BrandIcon><img src={Brand1Photo} height="64"/></BrandIcon>
-<BrandIcon><img src={Brand2Photo} height="64"/></BrandIcon>
-<BrandIcon active><img src={Brand3Photo} height="64"/></BrandIcon>
-<BrandIcon active><img src={Brand4Photo} height="64"/></BrandIcon>
-<BrandIcon><img src={Brand5Photo} height="64"/></BrandIcon>
-<BrandIcon><img src={Brand6Photo} height="64"/></BrandIcon>
-<BrandIcon active><img src={Brand7Photo} height="64"/></BrandIcon>
-<BrandIcon><img src={Brand8Photo} height="64"/></BrandIcon>
-</BrandActiveRow>
-
-</Section>
-
-
-<Section header="Recommended Scenes">
-<BrandRecommendedRow  >
-<BrandIcon active><img src={Brand9Photo} height="64"/></BrandIcon>
-<BrandIcon active><img src={Brand10Photo} height="64"/></BrandIcon>
-<BrandIcon active><img src={Brand11Photo} height="64" style={{backgroundColor: 'black'}}/></BrandIcon>
-<BrandIcon><img src={Brand12Photo} height="64" /></BrandIcon>
-</BrandRecommendedRow>
-</Section>
-
-  </ProfileLayout>
+      <Section header="Recommended Scenes">
+        <BrandRecommendedRow>
+          <BrandIcon active>
+            <img src={Brand9Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon active>
+            <img src={Brand10Photo} height="64" />
+          </BrandIcon>
+          <BrandIcon active>
+            <img
+              src={Brand11Photo}
+              height="64"
+              style={{ backgroundColor: 'black' }}
+            />
+          </BrandIcon>
+          <BrandIcon>
+            <img src={Brand12Photo} height="64" />
+          </BrandIcon>
+        </BrandRecommendedRow>
+      </Section>
+    </ProfileLayout>
   )
 }
 
@@ -137,13 +154,11 @@ export const AvatarRow = styled.div`
   flex-flow: row;
 `
 
-
 export const ClaimCountCaption = styled(Caption)`
   opacity: 0.5;
   font-size: 16px;
   white-space: nowrap;
 `
-
 
 export const ClaimCountRow = styled.div`
   display: flex;
@@ -151,29 +166,25 @@ export const ClaimCountRow = styled.div`
   flex-flow: row;
 `
 
-
-
 export const SocialRow = styled.div`
   display: flex;
   gap: 12px;
   flex-flow: row;
 `
 
-
 export const StatusRow = styled.div`
-      display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 `
-
 
 export const BrandActiveRow = styled.div`
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-    --tgui--cell--middle--padding: 16px 0;
-    align-items: center;
-    padding: 16px 24px;
+  --tgui--cell--middle--padding: 16px 0;
+  align-items: center;
+  padding: 16px 24px;
 `
 
 export const BrandRecommendedRow = styled.div`
@@ -181,8 +192,8 @@ export const BrandRecommendedRow = styled.div`
   gap: 12px;
   flex-wrap: wrap;
   --tgui--cell--middle--padding: 16px 0;
-    align-items: center;
-    padding: 16px 24px;
+  align-items: center;
+  padding: 16px 24px;
 `
 
 export const ClaimCountLogo = styled(SeedClubLogo)`
@@ -191,27 +202,29 @@ export const ClaimCountLogo = styled(SeedClubLogo)`
 
 export const SeedClubTokenLogo = styled(SeedClubLogo)`
   opacity: 0.5;
-    display: flex;
+  display: flex;
 `
 
 export const TransactionsIcon = styled(TransactionIcon)`
-    display: flex;
+  display: flex;
   opacity: 0.5;
 `
 
+interface BrandLogo {
+  isActive?: boolean
+}
 
-
-
-export const BrandLogo = styled.div`
+const BrandLogo = styled.div.withConfig({
+  shouldForwardProp: shouldExcludeProps(['isActive'])
+})<BrandLogo>`
   border-radius: 12px;
   border-width: 2px;
-  border-color: ${({active}) => active ? 'black' : 'transparent'};
+  border-color: ${({ isActive }) => (isActive ? 'black' : 'transparent')};
   border-style: solid;
   overflow: hidden;
   height: 64px;
   width: 64px;
-      position: relative;
-
+  position: relative;
 `
 
 export const SeedClubBrandIcon = styled(SeedClubLogo)`
@@ -219,16 +232,23 @@ export const SeedClubBrandIcon = styled(SeedClubLogo)`
   width: 16px;
   padding: 3px;
   background: var(--tgui--secondary_bg_color);
-    position: absolute;
-    right: 0;
-    top: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   border-radius: 0 0 0 12px;
   overflow: hidden;
 `
 
+interface BrandIcon {
+  active?: boolean
+  children: ReactNode
+}
 
-const BrandIcon = ({active, children}) => <BrandLogo active={active}>{children}
-  {active && <SeedClubBrandIcon />}
-</BrandLogo>
+const BrandIcon = ({ active, children }: BrandIcon) => (
+  <BrandLogo isActive={active}>
+    {children}
+    {active && <SeedClubBrandIcon />}
+  </BrandLogo>
+)
 
 export default HomeTabProfile

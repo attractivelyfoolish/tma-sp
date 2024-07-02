@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import basicSsl from '@vitejs/plugin-basic-ssl';
-import svgr from "vite-plugin-svgr";
+import basicSsl from '@vitejs/plugin-basic-ssl'
+import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
@@ -10,8 +10,13 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     svgr({
-      svgrOptions: { exportType: "default", ref: true, svgo: false, titleProp: true },
-      include: "**/*.svg",
+      svgrOptions: {
+        exportType: 'default',
+        ref: true,
+        svgo: false,
+        titleProp: true
+      },
+      include: '**/*.svg'
     }),
     basicSsl()
   ],
@@ -19,4 +24,4 @@ export default defineConfig({
     outDir: './docs'
   },
   base: '/tma-sp/'
-});
+})
