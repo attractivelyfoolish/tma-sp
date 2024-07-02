@@ -1,6 +1,6 @@
-<p align="center">
+git<p align="center">
   <br>
-  <img width="240" src="./src/assets/sp.png" alt="logo of specport">
+  <img width="240" src="./src/assets/SeedClubLogo.svg" alt="logo of specport">
   <br>
   <br>
 </p>

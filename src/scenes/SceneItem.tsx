@@ -127,6 +127,7 @@ export const SpotsOpenText = styled.div`
   display: flex;
   flex-flow: row;
   gap: 6px;
+
 `
 
 
@@ -180,6 +181,8 @@ export const SceneProgressDuration = styled.div`
   display: flex;
   flex-flow: column;
   text-align: right;
+      align-self: end;
+  
 `
 
 export const SceneInfoSection = styled.div`

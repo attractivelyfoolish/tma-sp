@@ -135,6 +135,7 @@ export const AvatarRow = styled.div`
 export const ClaimCountCaption = styled(Caption)`
   opacity: 0.5;
   font-size: 16px;
+  white-space: nowrap;
 `
 
 
@@ -211,7 +212,7 @@ export const SeedClubBrandIcon = styled(SeedClubLogo)`
   height: 16px;
   width: 16px;
   padding: 3px;
-  background: black;
+  background: var(--tgui--secondary_bg_color);
     position: absolute;
     right: 0;
     top: 0;
