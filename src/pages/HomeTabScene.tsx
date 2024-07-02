@@ -1,16 +1,16 @@
 import { List, Caption, Subheadline, Section } from '@telegram-apps/telegram-ui'
 import useAccountState from 'account/useAccountState'
+import SceneItem from 'scenes/SceneItem'
+import styled from 'styled-components'
+
+import { SeedClubIcon } from '../core/icons'
+
 import Brand1Photo from 'assets/brand1.png'
 import Brand2Photo from 'assets/brand2.png'
 import Brand3Photo from 'assets/brand3.png'
 import Brand5Photo from 'assets/brand5.png'
 import Brand7Photo from 'assets/brand7.png'
 import Brand8Photo from 'assets/brand8.png'
-import SceneItem from 'scenes/SceneItem'
-
-import styled from 'styled-components'
-
-import { SeedClubIcon } from '../core/icons'
 
 const HomeTabScene = () => {
   const { claimedRewards, claimRewards, completedScenes } = useAccountState()

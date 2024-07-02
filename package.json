@@ -9,7 +9,7 @@
     "start": "vite preview",
     "lint": "yarn lint:types && yarn lint:eslint",
     "lint:types": "tsc --noEmit",
-    "lint:eslint": "eslint . --ext=.tsx,.ts --max-warnings=0",
+    "lint:eslint": "eslint . --ext=.tsx,.ts --report-unused-disable-directives --max-warnings=0",
     "lint:fix": "yarn lint:eslint --fix",
     "format": "prettier --write .",
     "preview": "vite preview"

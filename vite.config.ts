@@ -19,6 +19,9 @@ export default defineConfig({
     }),
     basicSsl()
   ],
+  define: {
+    'process.env': {}
+  },
   build: {
     outDir: './docs'
   },

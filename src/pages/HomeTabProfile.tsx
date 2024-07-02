@@ -10,6 +10,13 @@ import {
   Chip
 } from '@telegram-apps/telegram-ui'
 import useAccountState from 'account/useAccountState'
+import styled from 'styled-components'
+
+import { SeedClubIcon, TransactionIcon } from '../core/icons'
+
+import { shouldExcludeProps } from '../utils/react'
+import { truncateWithEllipses } from 'utils/strings'
+
 import AvatarPhoto from 'assets/avatar.png'
 import Brand1Photo from 'assets/brand1.png'
 import Brand10Photo from 'assets/brand10.png'
@@ -23,13 +30,6 @@ import Brand6Photo from 'assets/brand6.png'
 import Brand7Photo from 'assets/brand7.png'
 import Brand8Photo from 'assets/brand8.png'
 import Brand9Photo from 'assets/brand9.png'
-
-import styled from 'styled-components'
-
-import { shouldExcludeProps } from '../utils/react'
-import { truncateWithEllipses } from 'utils/strings'
-
-import { SeedClubIcon, TransactionIcon } from '../core/icons'
 
 const HomeTabProfile = () => {
   const { claimedRewards } = useAccountState()
@@ -56,7 +56,7 @@ const HomeTabProfile = () => {
       <SocialRow>
         <Button mode="filled" size="s" onClick={disableLogin ? logout : login}>
           {disableLogin
-            ? truncateWithEllipses(user?.wallet?.address, 6, 4)
+            ? truncateWithEllipses(user?.wallet?.address)
             : 'Connect Wallet'}
         </Button>
 

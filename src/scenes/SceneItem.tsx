@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 
 import { Button, Progress, Caption } from '@telegram-apps/telegram-ui'
-
 import styled from 'styled-components'
 
 import { RightArrowIcon, SpotsOpenIcon as SpotsOpen } from '../core/icons'

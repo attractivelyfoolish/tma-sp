@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true, node: true },
+  env: { browser: true, es2020: true },
   settings: {
     react: {
       version: 'detect'
@@ -47,9 +47,9 @@ module.exports = {
           '/^react/',
           'module',
           '/pages/',
-          '/components/',
+          '/core/',
           '/utils/',
-          '/styles/',
+          '/assets/',
           '/types/'
         ],
         alphabetize: { order: 'asc', ignoreCase: true }

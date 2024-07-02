@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
 import { Tabbar, FixedLayout } from '@telegram-apps/telegram-ui'
+import styled from 'styled-components'
 
 import TabProfile from 'pages/HomeTabProfile'
 import TabScene from 'pages/HomeTabScene'
-
-import styled from 'styled-components'
 
 import { ProfileIcon, SceneIcon } from '../core/icons'
 
