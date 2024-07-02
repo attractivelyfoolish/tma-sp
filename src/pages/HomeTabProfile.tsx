@@ -15,12 +15,16 @@ import Brand10Photo from 'assets/brand10.png'
 import Brand11Photo from 'assets/brand11.png'
 import Brand12Photo from 'assets/brand12.png'
 import useAccountState from 'account/useAccountState'
+import {usePrivy} from '@privy-io/react-auth';
+import {truncateWithEllipses} from 'utils/strings'
 
 import { Tabbar, List,Avatar,Caption,Subheadline,Button, Section,Cell ,Chip} from '@telegram-apps/telegram-ui';
 
 
 const HomeTabProfile = () => {
   const {claimedRewards} = useAccountState();
+  const {ready, authenticated, login, user, logout} = usePrivy();
+  const disableLogin = !ready || (ready && authenticated);
 
   return (
   <ProfileLayout>
@@ -48,6 +52,7 @@ const HomeTabProfile = () => {
         username.eth
     </Subheadline>
 
+
     <SocialRow>
 
 
@@ -56,8 +61,9 @@ const HomeTabProfile = () => {
       <Button
   mode="filled"
   size="s"
+  onClick={disableLogin ? logout : login}
 >
-  0xd7da...0498
+  {disableLogin ? truncateWithEllipses(user.wallet.address, 6,4) : 'Connect Wallet'}
 </Button>
 
 <Button
