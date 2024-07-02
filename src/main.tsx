@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+
 import { AppRoot } from '@telegram-apps/telegram-ui'
-
 import '@telegram-apps/telegram-ui/dist/styles.css'
-
 import WebApp from '@twa-dev/sdk'
+
+import App from './App.tsx'
 
 WebApp.ready()
 

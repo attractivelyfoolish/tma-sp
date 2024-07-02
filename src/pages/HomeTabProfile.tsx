@@ -1,23 +1,6 @@
-import styled from 'styled-components'
-import TransactionIcon from 'assets/TransactionIcon.svg'
-import SeedClubLogo from 'assets/SeedClubLogo.svg'
-import AvatarPhoto from 'assets/avatar.png'
-import Brand1Photo from 'assets/brand1.png'
-import Brand2Photo from 'assets/brand2.png'
-import Brand3Photo from 'assets/brand3.png'
-import Brand4Photo from 'assets/brand4.png'
-import Brand5Photo from 'assets/brand5.png'
-import Brand6Photo from 'assets/brand6.png'
-import Brand7Photo from 'assets/brand7.png'
-import Brand8Photo from 'assets/brand8.png'
-import Brand9Photo from 'assets/brand9.png'
-import Brand10Photo from 'assets/brand10.png'
-import Brand11Photo from 'assets/brand11.png'
-import Brand12Photo from 'assets/brand12.png'
-import useAccountState from 'account/useAccountState'
-import { usePrivy } from '@privy-io/react-auth'
-import { truncateWithEllipses } from 'utils/strings'
+import { ReactNode } from 'react'
 
+import { usePrivy } from '@privy-io/react-auth'
 import {
   Avatar,
   Caption,
@@ -26,8 +9,27 @@ import {
   Section,
   Chip
 } from '@telegram-apps/telegram-ui'
-import { ReactNode } from 'react'
+import useAccountState from 'account/useAccountState'
+import AvatarPhoto from 'assets/avatar.png'
+import Brand1Photo from 'assets/brand1.png'
+import Brand10Photo from 'assets/brand10.png'
+import Brand11Photo from 'assets/brand11.png'
+import Brand12Photo from 'assets/brand12.png'
+import Brand2Photo from 'assets/brand2.png'
+import Brand3Photo from 'assets/brand3.png'
+import Brand4Photo from 'assets/brand4.png'
+import Brand5Photo from 'assets/brand5.png'
+import Brand6Photo from 'assets/brand6.png'
+import Brand7Photo from 'assets/brand7.png'
+import Brand8Photo from 'assets/brand8.png'
+import Brand9Photo from 'assets/brand9.png'
+
+import styled from 'styled-components'
+
 import { shouldExcludeProps } from '../utils/react'
+import { truncateWithEllipses } from 'utils/strings'
+
+import { SeedClubIcon, TransactionIcon } from '../core/icons'
 
 const HomeTabProfile = () => {
   const { claimedRewards } = useAccountState()
@@ -40,7 +42,7 @@ const HomeTabProfile = () => {
         <Avatar size={96} src={AvatarPhoto} />
 
         <ClaimCountRow>
-          <ClaimCountLogo height="16" />
+          <ClaimCountLogo height={16} />
           <ClaimCountCaption level="1" weight="3">
             000 000 001
           </ClaimCountCaption>
@@ -70,7 +72,7 @@ const HomeTabProfile = () => {
       <StatusRow>
         <Chip
           mode="mono"
-          before={<SeedClubTokenLogo height="16" />}
+          before={<SeedClubTokenLogo height={16} />}
           after="$club"
         >
           {claimedRewards}
@@ -78,7 +80,7 @@ const HomeTabProfile = () => {
 
         <Chip
           mode="mono"
-          before={<TransactionsIcon height="16" />}
+          before={<TransactionsIcon height={16} />}
           after="txns"
         >
           35647
@@ -196,11 +198,11 @@ export const BrandRecommendedRow = styled.div`
   padding: 16px 24px;
 `
 
-export const ClaimCountLogo = styled(SeedClubLogo)`
+export const ClaimCountLogo = styled(SeedClubIcon)`
   opacity: 0.5;
 `
 
-export const SeedClubTokenLogo = styled(SeedClubLogo)`
+export const SeedClubTokenLogo = styled(SeedClubIcon)`
   opacity: 0.5;
   display: flex;
 `
@@ -227,7 +229,7 @@ const BrandLogo = styled.div.withConfig({
   position: relative;
 `
 
-export const SeedClubBrandIcon = styled(SeedClubLogo)`
+export const SeedClubBrandIcon = styled(SeedClubIcon)`
   height: 16px;
   width: 16px;
   padding: 3px;

@@ -1,7 +1,7 @@
 export const truncateWithEllipses = (
   str?: string,
-  keepStart = 4,
-  keepEnd = 2
+  keepStart = 6,
+  keepEnd = 4
 ) => {
   return str?.replace?.(
     new RegExp(`(.{${keepStart}}).+(.{${keepEnd}})`, 'g'),

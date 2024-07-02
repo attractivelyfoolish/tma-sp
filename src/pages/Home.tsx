@@ -1,10 +1,13 @@
-import styled from 'styled-components'
 import { useState } from 'react'
-import IconProfile from 'assets/profile.svg'
-import IconScene from 'assets/scene.svg'
+
+import { Tabbar, FixedLayout } from '@telegram-apps/telegram-ui'
+
 import TabProfile from 'pages/HomeTabProfile'
 import TabScene from 'pages/HomeTabScene'
-import { Tabbar, FixedLayout } from '@telegram-apps/telegram-ui'
+
+import styled from 'styled-components'
+
+import { ProfileIcon, SceneIcon } from '../core/icons'
 
 function HomePage() {
   const [currentTab, setCurrentTab] = useState(tabs[1].id)
@@ -24,7 +27,7 @@ function HomePage() {
               onClick={() => setCurrentTab(id)}
             >
               <IconContainer>
-                <Icon height="32" />
+                <Icon height={32} />
               </IconContainer>
             </Tabbar.Item>
           ))}
@@ -44,13 +47,13 @@ const tabs = [
   {
     id: 1,
     text: 'Scene',
-    Icon: IconScene,
+    Icon: SceneIcon,
     Tab: TabScene
   },
   {
     id: 2,
     text: 'Profile',
-    Icon: IconProfile,
+    Icon: ProfileIcon,
     Tab: TabProfile
   }
 ]

@@ -1,8 +1,10 @@
-import styled from 'styled-components'
-import RightArrow from 'assets/RightArrow.svg'
-import SpotsOpen from 'assets/SpotsOpen.svg'
 import { ReactNode } from 'react'
+
 import { Button, Progress, Caption } from '@telegram-apps/telegram-ui'
+
+import styled from 'styled-components'
+
+import { RightArrowIcon, SpotsOpenIcon as SpotsOpen } from '../core/icons'
 
 export interface Scene {
   id: number
@@ -49,7 +51,7 @@ const SceneItem = ({ scene, claimRewards }: SceneItemProps) => {
                 <SpotsOpenText>
                   2 spots left
                   <SpotsOpenIcon>
-                    <SpotsOpen height="16" />
+                    <SpotsOpen height={16} />
                   </SpotsOpenIcon>
                 </SpotsOpenText>
               </Caption>
@@ -89,7 +91,7 @@ const SceneItem = ({ scene, claimRewards }: SceneItemProps) => {
               {isInProgress ? 'Join 4 Rooms' : 'Join 1 room to unlock'}
             </Caption>
 
-            <RightArrow height="16" />
+            <RightArrowIcon height={16} />
           </SceneInfoRow>
         )}
 

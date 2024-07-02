@@ -1,4 +1,4 @@
-git<p align="center">
+<p align="center">
 <br>
 <img width="240" src="./src/assets/SeedClub.png" alt="logo of specport">
 <br>

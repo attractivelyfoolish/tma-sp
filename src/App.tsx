@@ -1,9 +1,12 @@
+import { PrivyProvider } from '@privy-io/react-auth'
+import { AccountProvider } from 'account/AccountContext'
+
+import PageHome from './pages/Home'
+
 import { ThemeProvider } from 'styled-components'
+
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
-import { AccountProvider } from 'account/AccountContext'
-import PageHome from './pages/Home'
-import { PrivyProvider } from '@privy-io/react-auth'
 
 function App() {
   return (

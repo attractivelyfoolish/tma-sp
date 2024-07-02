@@ -1,15 +1,16 @@
-import styled from 'styled-components'
-import SeedClubLogo from 'assets/SeedClubLogo.svg'
-import SceneItem from 'scenes/SceneItem'
+import { List, Caption, Subheadline, Section } from '@telegram-apps/telegram-ui'
+import useAccountState from 'account/useAccountState'
 import Brand1Photo from 'assets/brand1.png'
 import Brand2Photo from 'assets/brand2.png'
 import Brand3Photo from 'assets/brand3.png'
 import Brand5Photo from 'assets/brand5.png'
 import Brand7Photo from 'assets/brand7.png'
 import Brand8Photo from 'assets/brand8.png'
-import useAccountState from 'account/useAccountState'
+import SceneItem from 'scenes/SceneItem'
 
-import { List, Caption, Subheadline, Section } from '@telegram-apps/telegram-ui'
+import styled from 'styled-components'
+
+import { SeedClubIcon } from '../core/icons'
 
 const HomeTabScene = () => {
   const { claimedRewards, claimRewards, completedScenes } = useAccountState()
@@ -23,7 +24,7 @@ const HomeTabScene = () => {
   return (
     <SceneLayout>
       <AccountRow>
-        <SeedClubAccountLogo height="32" />
+        <SeedClubAccountLogo height={32} />
 
         <AccountSummaryColumn>
           <Subheadline level="1" weight="1">
@@ -151,7 +152,7 @@ export const AccountSummaryColumn = styled.div`
   padding: 0 24px;
 `
 
-export const SeedClubAccountLogo = styled(SeedClubLogo)`
+export const SeedClubAccountLogo = styled(SeedClubIcon)`
   padding: 24px;
   box-sizing: content-box;
 `
